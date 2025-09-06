@@ -6,39 +6,6 @@ namespace Inilim\ExceptionEnum;
 
 final class EE
 {
-    // static function setToE(\Throwable $e, string $class, string|int $value): void
-    // {
-    //     (function (string $class, string|int $value) {
-    //         $this->__ee_class = $class;
-    //         $this->__ee_value = $value;
-    //     })->bindTo($e)->__invoke($class, $value);
-    // }
-
-    /**
-     * @param class-string $class
-     */
-    // static function isEE(string $class, \Throwable $e): bool
-    // {
-    //     return (function (string $class) {
-    //         return ($this->__ee_class ?? null) === $class;
-    //     })->bindTo($e)->__invoke($class);
-    // }
-
-    /**
-     * @return \UnitEnum|\BackedEnum|null
-     */
-    // static function enumFromE(\Throwable $e): ?\UnitEnum
-    // {
-    //     [$class, $value] = (function () {
-    //         return [$this->__ee_class ?? null, $this->__ee_value ?? null];
-    //     })->bindTo($e)->__invoke();
-
-    //     if (!\is_string($class) || $value === null) {
-    //         return null;
-    //     }
-    //     return self::enumFrom($class, $value);
-    // }
-
     static function enumFrom(string $class, string|int $value): ?\UnitEnum
     {
         if (!\class_exists($class, true) || !($class instanceof \UnitEnum)) {
