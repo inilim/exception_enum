@@ -1,0 +1,64 @@
+{
+  "name": "inilim/exception_enum",
+  "description": "",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Inilim\\ExceptionEnum\\": "src/"
+    },
+    "files": []
+  },
+  "extra": {
+    "exclude-from-files": [
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Inilim\\ExceptionEnum\\Test\\": "tests/"
+    },
+    "files": []
+  },
+  "authors": [
+    {
+      "name": "inilim"
+    },
+    {
+      "name": "internet community"
+    }
+  ],
+  "require": {
+    "php": ">=8.0"
+  },
+  "suggest": {
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "inilim/dump": "dev-main",
+    "phpunit/phpunit": "^9.6",
+    "mcaskill/composer-exclude-files": "^4.0",
+    "phpstan/phpstan": "^2.1"
+  },
+  "scripts": {
+    "unit": [
+      "php80 vendor/bin/phpunit"
+    ],
+    "unit:check": [
+      "php80 vendor/bin/phpunit tests"
+    ],
+    "stan": [
+      "php80 vendor/bin/phpstan"
+    ],
+    "stan:check": [
+      "php80 vendor/bin/phpstan analyze"
+    ]
+  },
+  "config": {
+    "platform": {
+      "php": "8.0"
+    },
+    "allow-plugins": {
+      "mcaskill/composer-exclude-files": true
+    }
+  }
+}
