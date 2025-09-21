@@ -16,8 +16,9 @@ trait EnumTrait
     /**
      * @param string|int|float|null $message
      * @throws \Throwable
+     * @return never
      */
-    function throw($message = null, ?int $code = null, ?\Throwable $previous = null): void
+    function throw($message = null, ?int $code = null, ?\Throwable $previous = null)
     {
         $trace = \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, 1)[0];
         throw $this->_e($message, $code, $previous, $trace);
@@ -32,8 +33,9 @@ trait EnumTrait
     /**
      * @param (string|int|float)[] $values
      * @throws \Throwable
+     * @return never
      */
-    function throwFormat(array $values, ?int $code = null, ?\Throwable $previous = null): void
+    function throwFormat(array $values, ?int $code = null, ?\Throwable $previous = null)
     {
         $message = \sprintf($this->format(), $values);
         $trace = \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, 1)[0];
