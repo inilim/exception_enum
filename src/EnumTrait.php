@@ -14,9 +14,10 @@ use Inilim\ExceptionEnum\Exception;
 trait EnumTrait
 {
     /**
+     * @param string|int|float|null $message
      * @throws \Throwable
      */
-    function throw(?string $message = null, ?int $code = null, ?\Throwable $previous = null): void
+    function throw($message = null, ?int $code = null, ?\Throwable $previous = null): void
     {
         $trace = \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, 1)[0];
         throw $this->_e($message, $code, $previous, $trace);
@@ -32,7 +33,7 @@ trait EnumTrait
      * @param (string|int|float)[] $values
      * @throws \Throwable
      */
-    function throwViaFormat(array $values, ?int $code = null, ?\Throwable $previous = null): void
+    function throwFormat(array $values, ?int $code = null, ?\Throwable $previous = null): void
     {
         $message = \sprintf($this->format(), $values);
         $trace = \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, 1)[0];
@@ -42,7 +43,7 @@ trait EnumTrait
     /**
      * @param (string|int|float)[] $values
      */
-    function eViaFormat(array $values, ?int $code = null, ?\Throwable $previous = null): \Throwable
+    function eFormat(array $values, ?int $code = null, ?\Throwable $previous = null): \Throwable
     {
         $message = \sprintf($this->format(), $values);
         $trace = \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, 1)[0];
@@ -64,8 +65,14 @@ trait EnumTrait
         return '';
     }
 
-    protected function _e(?string $message, ?int $code, ?\Throwable $previous, array $trace): \Throwable
+    /**
+     * @param string|int|float|null $message
+     */
+    protected function _e($message, ?int $code, ?\Throwable $previous, array $trace): \Throwable
     {
+        if ($message !== null) {
+            $message = (string)$message;
+        }
         $value = $this instanceof \BackedEnum ? $this->value : $this->name;
         $class = self::exceptionClass();
         $e = new $class(
